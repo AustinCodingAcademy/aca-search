@@ -55,11 +55,17 @@
         integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" 
         crossorigin="anonymous"
     ></script>
-    <!-- Local script -->
+    <!-- Local <script></script> -->
     <script type="text/javascript">
         window.onload = () => {
             const searchBar = document.querySelector('#search');
-            const handleSearch = () => {console.log(searchBar.value)}
+            const handleSearch = () => {
+                let query = searchBar.value;
+                // CAPTURE QUERY HERE
+                let urlQuery = query.split(' ').join('+');
+                let ddgQuery = `https://duckduckgo.com/?q=${urlQuery}`
+                window.open(ddgQuery);
+            }
             searchBar.addEventListener("keydown", e => {
                 if (e.keyCode === 13) {handleSearch()}
             });
