@@ -23,18 +23,18 @@
             <div class="col-11 col-md-6">
                 <div class="input-group">
                 <div class="input-group-btn">
-                    <button type="button" class="btn btn-secondary dropdown-toggle hidden-md-down" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Duck Duck Go
-                    </button>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Google</a>
-                        <a class="dropdown-item" href="#">MDN</a>
-                        <a class="dropdown-item" href="#">NPM</a>
+                    <div class="dropdown hidden-md-down">
+                        <select class="btn btn-secondary form-control dropdown-toggle dropdown-menu" id="select">
+                            <option value="!ddg">Duck Duck Go</option>
+                            <option value="!g">Google</option>
+                            <option value="!mdn">MDN</option>
+                            <option value="!npm">NPM</option>
+                        </select>
                     </div>
                 </div>
                 <input type="text" class="form-control" id="search" aria-label="Text input with dropdown button" autofocus>
                 <span class="input-group-btn">
-                    <button class="btn btn-secondary" type="button">Go!</button>
+                    <button class="btn btn-secondary" type="button" id="search-btn">Go!</button>
                 </span>
             </div>
         </div>
@@ -55,21 +55,25 @@
         integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" 
         crossorigin="anonymous"
     ></script>
-    <!-- Local <script></script> -->
+    <!-- Local script -->
     <script type="text/javascript">
-        window.onload = () => {
-            const searchBar = document.querySelector('#search');
+        $(window).ready(() => {
+            const $search = $('#search');
             const handleSearch = () => {
-                let query = searchBar.value;
+                let searchType = $('#select option:selected').val();
+                let query = $search.val();
+                console.log(searchType);
+                query += "+" + searchType;
                 // CAPTURE QUERY HERE
                 let urlQuery = query.split(' ').join('+');
                 let ddgQuery = `https://duckduckgo.com/?q=${urlQuery}`
-                window.open(ddgQuery);
+                console.log(ddgQuery);
+                location.assign(ddgQuery);
             }
-            searchBar.addEventListener("keydown", e => {
-                if (e.keyCode === 13) {handleSearch()}
+            $search.keypress(e => {
+                if (e.keyCode === 13) {handleSearch()}                
             });
-        }
+        });
     </script>
   </body>
 </html>
