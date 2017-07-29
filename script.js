@@ -1,39 +1,65 @@
 'use strict';
 
+const $search = $('#search');
+const $searchBtn = $('#search-btn');
+const $answer = $('#answer');
+let query;
+let searchType;
+
 function debounce(func, wait, immediate) {
     let timeout;
     return function () {
-        const context = this,
+        let context = this,
             args = arguments;
-        const later = function () {
+        let later = function () {
             timeout = null;
             if (!immediate) func.apply(context, args);
         };
-        const callNow = immediate && !timeout;
+        let callNow = immediate && !timeout;
         clearTimeout(timeout);
         timeout = setTimeout(later, wait);
         if (callNow) func.apply(context, args);
     };
 };
 
+function handleSearch() {
+    let searchType = $('#select option:selected').val();
+    query += "+" + searchType;
+    // CAPTURE QUERY HERE
+    let urlQuery = query.split(' ').join('+');
+    let ddgQuery = `https://duckduckgo.com/?q=${urlQuery}`;
+    window.open(ddgQuery);
+}
+
+const debSearch = debounce(() => {
+    query = $search.val();
+    console.log('Debounced');
+    fetchTest();
+}, 900);
+
+function fetchTest() {
+    fetch(`http://api.duckduckgo.com/?q=${query.split(' ').join('+')}&format=json&pretty=1`)
+    .then(response => {
+        console.log(response);
+        return JSON.stringify(response);
+    })
+    .then(json => {
+        console.log(json);
+        $answer.text(json);
+    })
+    .catch(err => console.log(err));
+}
+
 $(window).ready(() => {
-    const $search = $('#search');
-    const handleSearch = () => {
-        let searchType = $('#select option:selected').val();
-        let query = $search.val();
-        query += "+" + searchType;
-        // CAPTURE QUERY HERE
-        let urlQuery = query.split(' ').join('+');
-        let ddgQuery = `https://duckduckgo.com/?q=${urlQuery}`;
-        window.open(ddgQuery);
-    }
-    const debTest = debounce(() => {
-        console.log("DEBOUNCE TEST");
-    }, 1000);
     $search.keypress(e => {
+        query = $search.val();
+        searchType = $('#select option:selected').val();
         if (e.keyCode === 13) {
-            handleSearch()
+            handleSearch();
         }
-        debounce(debTest(), 2000);
+        debSearch();
+    });
+    $searchBtn.click(() => {
+        handleSearch();
     });
 });
