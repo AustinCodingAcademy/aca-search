@@ -36,7 +36,7 @@ const debSearch = debounce(() => {
     query = $search.val();
     console.log(query);
     fetchTest();
-}, 900);
+}, 600);
 
 function fetchTest() {
     fetch(`https://api.duckduckgo.com/?q=${query.split(' ').join('+')}&format=json&pretty=1`)

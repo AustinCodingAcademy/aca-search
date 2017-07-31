@@ -1,5 +1,5 @@
 # aca-search
-#### Todo:
+#### To Do:
 - [ ] db for queries
     - **AWS Simple db**
 - [x] ~~fetch for ddg api~~
