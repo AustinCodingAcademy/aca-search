@@ -1,5 +1,8 @@
 # aca-search
 #### Todo:
-- DB for queries
-- fetch for ddg api
-- ask about campus manager connectivity
+- [] db for queries
+..* **AWS Simple db**
+- [x] ~~fetch for ddg api~~
+..* *fixed a dumb* 
+- [] ask about campus manager connectivity
+..* Ignore for now
