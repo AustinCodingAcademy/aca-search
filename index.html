@@ -13,10 +13,10 @@
         integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" 
         crossorigin="anonymous"
     >
-      <!-- <style>* {border: 1px solid black}</style> -->
+       <!-- <style>* {border: 1px solid black}</style> -->
   </head>
   <body>
-    <div class="continer-fluid">
+    <div class="container-fluid">
         <div class="row justify-content-center align-middle mt-5">
             <img class="img" src="./logo.png" alt="ACA Logo">
         </div>
@@ -30,6 +30,7 @@
                                 <option value="!g">Google</option>
                                 <option value="!mdn">Mozilla Dev</option>
                                 <option value="!npm">NPM</option>
+                                <option value="!cdn">CDN</option>
                             </select>
                         </div>
                     </div>
@@ -46,22 +47,39 @@
             <!-- Left -->
             <div class="col-md-3 hidden-md-down">
                 <div class="card text-center">
-                    <div class="card-header">
-                        <ul class="nav nav-tabs card-header-tabs">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#">CDN's</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Something Else</a>
-                        </li>
-                        </ul>
-                    </div>
-                    <div class="card-block">
-                        <h4 class="card-title">Your CDN libarrry here</h4>
-                        <p class="card-text">CDN 1</p>
-                        <p class="card-text">CDN B</p>
-                        <p class="card-text">Third CDN</p>
-                        <a href="#" class="btn btn-primary">a button</a>
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#docs" role="tab">Docs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#cdns" role="tab">CDNs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#other" role="tab">Other</a>
+                    </li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="docs" role="tabpanel">
+                            <div class="card-block">
+                                <h4 class="card-title">Your docs here!</h4>                                
+                                <p class="card-text">Docs docs docs</p>
+                                <a href="#" class="btn btn-primary">A button</a>                                
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="cdns" role="tabpanel">
+                            <div class="card-block">
+                                <p class="card-text">cdn <br /> cdn <br /> cdn <br /></p>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="other" role="tabpanel">
+                            <div class="card-block">
+                                <h4 class="card-title">Special title treatment</h4>
+                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -74,13 +92,31 @@
                 <div class="card" style="width: 20rem;">
                     <div class="card-block">
                         <h4 class="card-title">Git cheat sheet</h4>
+                        <div class="input-group">
+                            <input class="form-control" id="git-search" type="text"placeholder="Search" aria-describedby="git-button">
+                            <span class="input-group-addon" id="git-button">?</span>
+                        </div>
                     </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">git status</li>
-                        <li class="list-group-item">git add -A</li>
-                        <li class="list-group-item">git commit -m "message"</li>
-                        <li class="list-group-item">git push origin</li>
-                    </ul>
+                    <table class="table">
+                        <tbody id="git-list">
+                            <tr>
+                                <td scope="row">status</th>
+                                <td>what's up!</td>
+                            </tr>
+                            <tr>
+                                <td scope="row">add</th>
+                                <td>put a git on it!</td>
+                            </tr>
+                            <tr>
+                                <td scope="row">commit</th>
+                                <td>name it!</td>
+                            </tr>
+                            <tr>
+                                <td scope="row">push</th>
+                                <td>give it away!</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -101,6 +137,7 @@
         integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" 
         crossorigin="anonymous"
     ></script>
+    <script src="./jquery.searcher.js"></script>
     <!-- Local script -->
     <script type="text/javascript" src="./script.js"></script>
   </body>

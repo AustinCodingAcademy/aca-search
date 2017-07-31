@@ -3,8 +3,15 @@
 const $search = $('#search');
 const $searchBtn = $('#search-btn');
 const $answer = $('#answer');
+const $gitSearch = $('#git-search');
 let query;
 let searchType;
+
+$("#git-list").searcher({
+    // itemSelector:  "tr", // jQuery selector for the data item element
+    // textSelector:  "td", // jQuery selector for the element which contains the text
+    inputSelector: "#git-search"  // jQuery selector for the input element
+});
 
 function debounce(func, wait, immediate) {
     let timeout;
