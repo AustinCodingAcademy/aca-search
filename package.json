@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/austincodingacademy/aca-search#readme",
   "dependencies": {
-    "node-ddg-api": "^0.1.4"
+    "node-ddg-api": "^0.1.4",
+    "sentiment": "^4.0.0"
   }
 }
